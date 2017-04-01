@@ -1,0 +1,132 @@
+﻿<Window x:Class="ProductMonitor.Desktop.Shell"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:converter="clr-namespace:ProductMonitor.Desktop.Converter"
+        xmlns:loc="clr-namespace:ProductMonitor.Desktop.Infrastructrue"
+        Title="{Binding Path=Title}" Height="600" Width="800" WindowStartupLocation="CenterScreen"
+        IsEnabled="{Binding Path=IsEnable}">
+    <Window.Resources>
+        <converter:HasProductConverter x:Key="HasProductConverter"></converter:HasProductConverter>
+        <Style  TargetType="DataGridRow">
+            <Setter Property="Background" Value="#F2F2F2" />
+            <Setter Property="Foreground" Value="Black" />
+            <Style.Triggers>
+                <!--隔行换色-->
+                <Trigger Property="AlternationIndex" Value="0" >
+                    <Setter Property="Background" Value="#e7e7e7" />
+                </Trigger>
+                <Trigger Property="AlternationIndex" Value="1" >
+                    <Setter Property="Background" Value="#f2f2f2" />
+                </Trigger>
+
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="LightGray"/>
+                    <!--<Setter Property="Foreground" Value="White"/>-->
+                </Trigger>
+
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Foreground" Value="Black"/>
+                </Trigger>
+                <DataTrigger Binding="{Binding Path=HasProduct}" Value="True">
+                    <Setter Property="Background" Value="LightGreen"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="WaitingTextStyle">
+            <Setter Property="TextBlock.FontSize" Value="30"></Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="5"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="5"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="5"></RowDefinition>
+            <RowDefinition Height="160"></RowDefinition>
+            <RowDefinition Height="5"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left">
+            <Button Content="添加商品详情网址" Command="{Binding AddCommand}"></Button>
+        </StackPanel>
+        <GroupBox Grid.Column="1" Grid.Row="3" Header="商品监控列表" VerticalAlignment="Top">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="5"></RowDefinition>
+                    <RowDefinition Height="20"></RowDefinition>
+                </Grid.RowDefinitions>
+                <DataGrid Grid.Column="0" Grid.Row="0" x:Name="gridProducts" ItemsSource="{Binding Path=ProductViewModels}"
+                      SelectedItem="{Binding Path=SelectedProductViewModel, Mode=TwoWay}"
+                      AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True"
+                          HorizontalScrollBarVisibility="Auto"
+                          VerticalScrollBarVisibility="Auto" Height="300" >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseDoubleClick">
+                            <i:InvokeCommandAction Command="{Binding Path=DoubleClickCommand}">
+                            </i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="序号" Binding="{Binding Path=Index}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="商品名称" Binding="{Binding Path=Name}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="商品价格" Binding="{Binding Path=Price}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="是否有货" Binding="{Binding Path=HasProduct, Converter={StaticResource HasProductConverter}}" ></DataGridTextColumn>
+                        <DataGridHyperlinkColumn Header="商品网址" Binding="{Binding Path=Url}" Width="*"></DataGridHyperlinkColumn>
+                        <DataGridTemplateColumn Header="操作">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <ItemContainerTemplate>
+                                    <Button Content="删 除" Command="{Binding Path=DeleteCommand}"></Button>
+                                </ItemContainerTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Text="共计："></TextBlock>
+                    <TextBlock Text="{Binding ElementName=gridProducts, Path=Items.Count}"></TextBlock>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Column="1" Grid.Row="5" Header="商品监控日志" VerticalAlignment="Top">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="5"></RowDefinition>
+                    <RowDefinition Height="20"></RowDefinition>
+                </Grid.RowDefinitions>
+                <ListView Grid.Column="0" Grid.Row="0"
+                          x:Name="listViewLog" ItemsSource="{Binding Path=Logs}" Height="110"
+                          loc:ListScroll.IsEnabled="true">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="日志时间" DisplayMemberBinding="{Binding CreateTime}"></GridViewColumn>
+                            <GridViewColumn Header="日志内容" DisplayMemberBinding="{Binding Content}"></GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Text="共计："></TextBlock>
+                    <TextBlock Text="{Binding ElementName=listViewLog, Path=Items.Count}"></TextBlock>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+        <StackPanel Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" Grid.RowSpan="7" 
+                    HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Visibility="{Binding Path=IsShowWaiting}">
+            <TextBlock Text="请等待..." Style="{StaticResource WaitingTextStyle}"></TextBlock>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,8 @@
+Create Table Product
+(
+Id int primary key,
+Url varchar(200),
+CreateTime DateTime
+)
+
+SELECT COUNT(*) FROM sqlite_master where type='table' and name='DBInfo'

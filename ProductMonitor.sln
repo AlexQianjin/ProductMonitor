@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductMonitor.Desktop", "ProductMonitor.Desktop\ProductMonitor.Desktop.csproj", "{321A894D-B06B-45FB-AF90-30C3D81F017D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductMonitor.Utility", "ProductMonitor.Utility\ProductMonitor.Utility.csproj", "{18C852FB-DB49-4029-B1B8-F8D20CE93F5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductMonitor.Domain", "ProductMonitor.Domain\ProductMonitor.Domain.csproj", "{2EA419D5-E8BA-4263-8938-65D573BD6E29}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		CD_ROM|Any CPU = CD_ROM|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+		DVD-5|Any CPU = DVD-5|Any CPU
+		Release|Any CPU = Release|Any CPU
+		SingleImage|Any CPU = SingleImage|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{321A894D-B06B-45FB-AF90-30C3D81F017D}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
+		{321A894D-B06B-45FB-AF90-30C3D81F017D}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
+		{321A894D-B06B-45FB-AF90-30C3D81F017D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{321A894D-B06B-45FB-AF90-30C3D81F017D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{321A894D-B06B-45FB-AF90-30C3D81F017D}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{321A894D-B06B-45FB-AF90-30C3D81F017D}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{321A894D-B06B-45FB-AF90-30C3D81F017D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{321A894D-B06B-45FB-AF90-30C3D81F017D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{321A894D-B06B-45FB-AF90-30C3D81F017D}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
+		{321A894D-B06B-45FB-AF90-30C3D81F017D}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+		{18C852FB-DB49-4029-B1B8-F8D20CE93F5D}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
+		{18C852FB-DB49-4029-B1B8-F8D20CE93F5D}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
+		{18C852FB-DB49-4029-B1B8-F8D20CE93F5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18C852FB-DB49-4029-B1B8-F8D20CE93F5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18C852FB-DB49-4029-B1B8-F8D20CE93F5D}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{18C852FB-DB49-4029-B1B8-F8D20CE93F5D}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{18C852FB-DB49-4029-B1B8-F8D20CE93F5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18C852FB-DB49-4029-B1B8-F8D20CE93F5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18C852FB-DB49-4029-B1B8-F8D20CE93F5D}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
+		{18C852FB-DB49-4029-B1B8-F8D20CE93F5D}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+		{2EA419D5-E8BA-4263-8938-65D573BD6E29}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
+		{2EA419D5-E8BA-4263-8938-65D573BD6E29}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
+		{2EA419D5-E8BA-4263-8938-65D573BD6E29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EA419D5-E8BA-4263-8938-65D573BD6E29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EA419D5-E8BA-4263-8938-65D573BD6E29}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EA419D5-E8BA-4263-8938-65D573BD6E29}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{2EA419D5-E8BA-4263-8938-65D573BD6E29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EA419D5-E8BA-4263-8938-65D573BD6E29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EA419D5-E8BA-4263-8938-65D573BD6E29}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
+		{2EA419D5-E8BA-4263-8938-65D573BD6E29}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.2\lib\NET35
+	EndGlobalSection
+EndGlobal
